@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AuthFormControler">
+   <children>
+      <Label layoutX="128.0" layoutY="130.0" text="UserName">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="AuthUserName" layoutX="110.0" layoutY="181.0" prefHeight="25.0" prefWidth="358.0" promptText="Username">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button id="AuthSubmit" layoutX="221.0" layoutY="253.0" mnemonicParsing="false" onAction="#authInfosSubmission" prefHeight="25.0" prefWidth="137.0" text="Submit">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
