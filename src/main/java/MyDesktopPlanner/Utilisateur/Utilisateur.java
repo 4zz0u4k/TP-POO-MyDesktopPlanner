@@ -1,6 +1,7 @@
 package MyDesktopPlanner.Utilisateur;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -88,6 +89,25 @@ public class Utilisateur implements Serializable {
             return true;
         }else {
             return false;
+        }
+    }
+
+    public void planificationMannuelle(){
+        System.out.println("Tache simple ou décomposable ?");
+        Scanner scanner = new Scanner(System.in);
+        int choix = scanner.nextInt();
+        if(choix == 0){ //Simple
+            System.out.println("Name : ");
+            String nom = scanner.nextLine();
+            System.out.println("Priorité : ");
+            String priorité = scanner.nextLine();
+            System.out.println("Jour : ");
+            String jour = scanner.nextLine();
+            System.out.println("Durée : ");
+            String durée = scanner.nextLine();
+            this.calendrier.ajouterTacheSimpleManuelle(nom,priorité,Duration.parse(durée),LocalDate.parse(jour));
+        }else { //Décomposable
+
         }
     }
 

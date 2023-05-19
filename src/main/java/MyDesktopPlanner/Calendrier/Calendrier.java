@@ -1,6 +1,7 @@
 package MyDesktopPlanner.Calendrier;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.HashMap;
@@ -24,6 +25,20 @@ public class Calendrier implements Serializable {
         } else {
             // handle the case where the search date is not in the HashMap
             System.out.println("Nein makach had la date");
+        }
+    }
+
+    public void ajouterTacheSimpleManuelle(String nom, String priorité, Duration durée,LocalDate jour){
+        if(jours.containsKey(jour)){
+            System.out.println("Jour trouvée :)");
+            if(jour.isBefore(LocalDate.now())){//Go atack les crénos
+
+            }else {
+                System.out.println("How come nigga ???");
+            }
+        }
+        else {
+            System.out.println("Ce jours n'existe pas :(");
         }
     }
 }

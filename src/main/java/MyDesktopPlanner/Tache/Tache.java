@@ -7,4 +7,8 @@ public abstract class Tache implements Serializable {
     private String nom;
     private Prioritée prioritée;
     private Duration durée;
+
+    public Tache(String nom, String priorité, Duration durée) {
+
+    }
 }
