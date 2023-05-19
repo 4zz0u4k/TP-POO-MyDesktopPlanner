@@ -111,6 +111,11 @@ public class Utilisateur implements Serializable {
         }
     }
 
+    public void ajouterCrénoLibre(LocalDate date,LocalTime tempsDebut,LocalTime tempsFinale){
+        Créno newCréno = new Créno(tempsDebut,tempsFinale,EtatCréno.Libre);
+        calendrier.insertCreno(date,newCréno);
+    }
+
     public String getUserName() {
         return userName;
     }

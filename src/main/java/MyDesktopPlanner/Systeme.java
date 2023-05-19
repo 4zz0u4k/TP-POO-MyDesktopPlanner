@@ -18,11 +18,8 @@ public class Systeme extends Application {
     public void start(Stage stage) throws IOException {
         YearMonth yearMonthObject = YearMonth.now();
         //Loading the page
-        FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("CalendarFX.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("AuthentificationForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        CalendarControler MonthController = fxmlLoader.getController();
-        YearMonth yearmonth = YearMonth.now();
-        MonthController.displayMonth(yearmonth);
         stage.setTitle("MyDesktopPlanner");
         stage.setScene(scene);
         stage.show();

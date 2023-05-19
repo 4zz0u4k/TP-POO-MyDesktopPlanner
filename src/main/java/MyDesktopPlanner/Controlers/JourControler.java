@@ -18,13 +18,21 @@ public class JourControler {
     private VBox hoursContainer;
     public void displayDays(){
         for (int hour = 0; hour < 24; hour++) {
-            String hourLabel = String.format("%02d:00", hour);
-            Label hourFXLabel = new Label(hourLabel);
-            hourFXLabel.setFont(Font.font("Arial", FontWeight.BOLD, 32));
-            hoursContainer.getChildren().add(hourFXLabel);
+            for (int minute = 0; minute < 60; minute += 15) {
+                String hourLabel = String.format("    %02d:%02d", hour, minute);
+                Label hourFXLabel = new Label(hourLabel);
+                hourFXLabel.setFont(Font.font("Arial", FontWeight.MEDIUM, 18));
+
+                if (minute > 0) {
+                    hourFXLabel.setOpacity(0.3);
+                }
+
+                hoursContainer.getChildren().add(hourFXLabel);
+            }
             if (hour < 23) {
                 Line separatorLine = new Line();
-                separatorLine.setEndX(200);
+                separatorLine.setEndX(800);
+                separatorLine.setOpacity(0.1);
                 separatorLine.setStroke(Color.GRAY);
                 separatorLine.setStrokeWidth(1);
                 hoursContainer.getChildren().add(separatorLine);

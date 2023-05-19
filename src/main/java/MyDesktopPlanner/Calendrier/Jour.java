@@ -10,9 +10,10 @@ public class Jour implements Serializable {
     public boolean insererCréno(Créno newCréno){
         if (this.vérifierDisponibilitéeCréno(newCréno)){
             listeCréno.add(newCréno);
+            System.out.println("Suiiiiiii sa verife");
             return true;
         }else {
-            System.out.println("Ak dekhltou f w7d kyn deja g3artha !!");
+            System.out.println("Ak dekhltou f w7d kyn deja !!");
             return false;
         }
     }

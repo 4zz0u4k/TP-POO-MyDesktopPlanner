@@ -1,16 +1,19 @@
 package MyDesktopPlanner.Controlers;
 
 import MyDesktopPlanner.Systeme;
+import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -27,8 +30,10 @@ public class CalendarControler {
     private Button goBackward;
     @FXML
     private Button goForward;
+    @FXML
+    private Button AjtCrénoBTN;
 
-    public void displayMonth(YearMonth yearMonthObject) {
+    public void displayMonth(YearMonth yearMonthObject, Utilisateur user) {
         calendarGrid.getChildren().clear(); // Clear existing buttons
         MonthYearDislay.setText(yearMonthObject.getMonth().toString()+" "+yearMonthObject.getYear());
         LocalDate firstDayOfMonth = yearMonthObject.atDay(1);
@@ -60,19 +65,35 @@ public class CalendarControler {
                 row++;
             }
         }
-        goBackward.setOnAction(event -> handleGoBackward(yearMonthObject));
-        goForward.setOnAction(event -> handleGoForward(yearMonthObject));
+        goBackward.setOnAction(event -> handleGoBackward(yearMonthObject,user));
+        goForward.setOnAction(event -> handleGoForward(yearMonthObject,user));
+        AjtCrénoBTN.setOnAction(event -> handleAjoutCréno(user));
     }
 
-    private void handleGoBackward(YearMonth theCurrentONe) {
-        displayMonth(theCurrentONe.minusMonths(1));
+    private void handleGoBackward(YearMonth theCurrentONe,Utilisateur user) {
+        displayMonth(theCurrentONe.minusMonths(1),user);
     }
 
-    private void handleGoForward(YearMonth theCurrentONe) {
-        displayMonth(theCurrentONe.plusMonths(1));
+    private void handleGoForward(YearMonth theCurrentONe,Utilisateur user) {
+        displayMonth(theCurrentONe.plusMonths(1),user);
     }
     private void handleDateSelection(int date ,YearMonth yearMonth){
 
+    }
+    private void handleAjoutCréno(Utilisateur user){
+        try{
+            Stage Ajoutpopup = new Stage();
+            Ajoutpopup.setTitle("Ajouter Créno");
+            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("AjoutCreno.fxml"));
+            Parent AjoutCréno = fxmlLoader.load();
+            AjoutCrénoControler controller = fxmlLoader.getController();
+            controller.setUser(user); // Set the user object on the controller
+            Ajoutpopup.setScene(new Scene(AjoutCréno));
+            Ajoutpopup.showAndWait();
+        }catch (Exception e ){
+            System.out.println("Something went wrong");
+            e.printStackTrace();
+        }
     }
 
 }
