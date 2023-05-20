@@ -1,11 +1,17 @@
 package MyDesktopPlanner.Calendrier;
 
+import MyDesktopPlanner.Tache.TacheSimple;
+
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 public class Jour implements Serializable {
-    LinkedList<Créno> listeCréno;
+    ArrayList<Créno> listeCréno;
     public Jour(){
-        listeCréno = new LinkedList<Créno>();
+        listeCréno = new ArrayList<Créno>();
     }
     public boolean insererCréno(Créno newCréno){
         if (this.vérifierDisponibilitéeCréno(newCréno)){
@@ -28,5 +34,17 @@ public class Jour implements Serializable {
             }
         }
         return true;
+    }
+
+    public void planificationSM(LocalTime heureDébut, LocalTime heureFin, TacheSimple tache){
+        for (Créno créno : listeCréno){
+            if(créno.insertionPossible(heureDébut,heureFin)){
+                //insertion possible
+                créno.insererTacheSM(heureDébut,tache,this.listeCréno);
+            }
+        }
+    }
+    public ArrayList<Créno> getListeCréno() {
+        return listeCréno;
     }
 }

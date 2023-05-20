@@ -7,6 +7,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import MyDesktopPlanner.Calendrier.*;
+import MyDesktopPlanner.Tache.Tache;
+import MyDesktopPlanner.Tache.TacheSimple;
 
 public class Utilisateur implements Serializable {
     //Infos User
@@ -111,9 +113,17 @@ public class Utilisateur implements Serializable {
         }
     }
 
+    public void planificationManuelleSimple(LocalDate date, LocalTime heureDébut, LocalTime heureFin, int pèriodicité, int forHowLong,TacheSimple tache){
+        calendrier.planificationTacheSimple(date,heureDébut,heureFin,pèriodicité,forHowLong,tache);
+    }
+
     public void ajouterCrénoLibre(LocalDate date,LocalTime tempsDebut,LocalTime tempsFinale){
         Créno newCréno = new Créno(tempsDebut,tempsFinale,EtatCréno.Libre);
         calendrier.insertCreno(date,newCréno);
+    }
+
+    public Jour getSpecificJourney(LocalDate date){
+        return calendrier.getSpecificJourney(date);
     }
 
     public String getUserName() {

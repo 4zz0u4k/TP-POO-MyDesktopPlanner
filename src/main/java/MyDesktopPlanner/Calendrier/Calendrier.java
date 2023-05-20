@@ -1,8 +1,11 @@
 package MyDesktopPlanner.Calendrier;
 
+import MyDesktopPlanner.Tache.TacheSimple;
+
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Year;
 import java.util.HashMap;
 public class Calendrier implements Serializable {
@@ -34,6 +37,23 @@ public class Calendrier implements Serializable {
         }
         else {
             System.out.println("Ce jours n'existe pas :(");
+        }
+    }
+
+    public Jour getSpecificJourney(LocalDate date){
+        if(jours.containsKey(date)){
+            return jours.get(date);
+        }else {
+            return null;
+        }
+    }
+
+    public void planificationTacheSimple(LocalDate date, LocalTime heureDébut, LocalTime heureFin, int periodicité, int forHowLong, TacheSimple tache){
+        if(jours.containsKey(date)){
+            jours.get(date).planificationSM(heureDébut,heureFin,tache);
+        }
+        else {
+            System.out.println("Y'a aucun créno libre dans ce jours la !! ");
         }
     }
 }

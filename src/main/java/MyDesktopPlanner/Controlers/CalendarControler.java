@@ -55,7 +55,7 @@ public class CalendarControler {
 
             int finalDay = day;
 
-            button.setOnAction(event -> handleDateSelection(finalDay,yearMonthObject));
+            button.setOnAction(event -> handleDateSelection(finalDay,yearMonthObject,user));
 
             GridPane.setHalignment(button, HPos.CENTER); // Align horizontally to center
             GridPane.setValignment(button, VPos.CENTER); // Align vertically to center
@@ -77,8 +77,24 @@ public class CalendarControler {
     private void handleGoForward(YearMonth theCurrentONe,Utilisateur user) {
         displayMonth(theCurrentONe.plusMonths(1),user);
     }
-    private void handleDateSelection(int date ,YearMonth yearMonth){
+    private void handleDateSelection(int date ,YearMonth yearMonth,Utilisateur user){
+        try{
+            System.out.println(date + " "+yearMonth);
+            Stage Ajoutpopup = new Stage();
+            Ajoutpopup.setTitle("Ajouter Créno");
+            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("JourFX.fxml"));
+            Parent AffJour = fxmlLoader.load();
+            JourControler controller = fxmlLoader.getController();
+            controller.setUser(user); // Set the user object on the controller
+            controller.setDate(yearMonth.atDay(date));
+            controller.displayDays();
+            Ajoutpopup.setScene(new Scene(AffJour));
+            Ajoutpopup.showAndWait();
 
+        }catch (Exception e ){
+            System.out.println("Something went wrong");
+            e.printStackTrace();
+        }
     }
     private void handleAjoutCréno(Utilisateur user){
         try{

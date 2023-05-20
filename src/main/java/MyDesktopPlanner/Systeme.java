@@ -13,7 +13,6 @@ import java.time.YearMonth;
 
 public class Systeme extends Application {
 
-
     @Override
     public void start(Stage stage) throws IOException {
         YearMonth yearMonthObject = YearMonth.now();
