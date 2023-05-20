@@ -9,4 +9,12 @@ public class Priority {
         this.couleur = couleur;
         this.nom = nom;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public Color getCouleur() {
+        return couleur;
+    }
 }

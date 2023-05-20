@@ -113,8 +113,8 @@ public class Utilisateur implements Serializable {
         }
     }
 
-    public void planificationManuelleSimple(LocalDate date, LocalTime heureDébut, LocalTime heureFin, int pèriodicité, int forHowLong,TacheSimple tache){
-        calendrier.planificationTacheSimple(date,heureDébut,heureFin,pèriodicité,forHowLong,tache);
+    public void planificationManuelleSimple(LocalDate date, LocalTime heureDébut, int pèriodicité, int forHowLong,TacheSimple tache){
+        calendrier.planificationTacheSimple(date,heureDébut,pèriodicité,forHowLong,tache);
     }
 
     public void ajouterCrénoLibre(LocalDate date,LocalTime tempsDebut,LocalTime tempsFinale){

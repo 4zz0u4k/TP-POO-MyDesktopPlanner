@@ -48,9 +48,9 @@ public class Calendrier implements Serializable {
         }
     }
 
-    public void planificationTacheSimple(LocalDate date, LocalTime heureDébut, LocalTime heureFin, int periodicité, int forHowLong, TacheSimple tache){
+    public void planificationTacheSimple(LocalDate date, LocalTime heureDébut, int periodicité, int forHowLong, TacheSimple tache){
         if(jours.containsKey(date)){
-            jours.get(date).planificationSM(heureDébut,heureFin,tache);
+            jours.get(date).planificationSM(heureDébut,tache);
         }
         else {
             System.out.println("Y'a aucun créno libre dans ce jours la !! ");

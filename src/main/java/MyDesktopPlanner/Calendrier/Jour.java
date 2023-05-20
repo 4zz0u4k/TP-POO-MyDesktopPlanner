@@ -3,11 +3,8 @@ package MyDesktopPlanner.Calendrier;
 import MyDesktopPlanner.Tache.TacheSimple;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 public class Jour implements Serializable {
     ArrayList<Créno> listeCréno;
     public Jour(){
@@ -36,11 +33,12 @@ public class Jour implements Serializable {
         return true;
     }
 
-    public void planificationSM(LocalTime heureDébut, LocalTime heureFin, TacheSimple tache){
+    public void planificationSM(LocalTime heureDébut, TacheSimple tache){
         for (Créno créno : listeCréno){
-            if(créno.insertionPossible(heureDébut,heureFin)){
+            if(créno.insertionPossible(heureDébut,heureDébut.plus(tache.getDurée()))){
                 //insertion possible
                 créno.insererTacheSM(heureDébut,tache,this.listeCréno);
+                return;
             }
         }
     }

@@ -1,24 +1,29 @@
 package MyDesktopPlanner.Controlers;
 
 import MyDesktopPlanner.Calendrier.Créno;
+import MyDesktopPlanner.Calendrier.EtatCréno;
 import MyDesktopPlanner.Systeme;
+import MyDesktopPlanner.Tache.Tache;
+import MyDesktopPlanner.Tache.TacheSimple;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,8 +34,9 @@ public class JourControler {
     private LocalDate date;
     @FXML
     private ScrollPane scrollBar;
+
     @FXML
-    private ListView<Créno> viewList;
+    private VBox TheTaskVBox;
     @FXML
     private Button ButtonAjout;
     public void displayDays(){
@@ -40,8 +46,22 @@ public class JourControler {
             Collections.sort(listeCréno);
             //Display the liste of créno !!
             for(Créno créno : listeCréno){
-                System.out.println(créno.getHeureDebut());
-                viewList.getItems().add(créno);
+                System.out.println("One to go");
+                if (créno.getÉtat()== EtatCréno.Libre){
+                    //Vide
+                }
+                else {
+                    String priority = créno.getTache().getPrioritée().getNom();
+                    Color couleur = créno.getTache().getPrioritée().getCouleur();
+                    String tacheName = créno.getTache().getNom();
+                    Duration durée = créno.getTache().getDurée();
+                    Label nameLabel = new Label(tacheName);
+                    Label priorityLabel = new Label(priority);
+                    priorityLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    nameLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    TheTaskVBox.getChildren().add(priorityLabel);
+                    TheTaskVBox.getChildren().add(nameLabel);
+                }
             }
         }
         else{
@@ -56,29 +76,6 @@ public class JourControler {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    /*
-    *         for (int hour = 0; hour < 24; hour++) {
-            for (int minute = 0; minute < 60; minute += 15) {
-                String hourLabel = String.format("    %02d:%02d", hour, minute);
-                Label hourFXLabel = new Label(hourLabel);
-                hourFXLabel.setFont(Font.font("Arial", FontWeight.MEDIUM, 18));
-
-                if (minute > 0) {
-                    hourFXLabel.setOpacity(0.3);
-                }
-
-                hoursContainer.getChildren().add(hourFXLabel);
-            }
-            if (hour < 23) {
-                Line separatorLine = new Line();
-                separatorLine.setEndX(800);
-                separatorLine.setOpacity(0.1);
-                separatorLine.setStroke(Color.GRAY);
-                separatorLine.setStrokeWidth(1);
-                hoursContainer.getChildren().add(separatorLine);
-            }
-        }
-     */
 
     @FXML
     void AjouterTacheManuelleAvecDateDispo(ActionEvent event) {

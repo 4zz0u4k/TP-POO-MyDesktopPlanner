@@ -23,9 +23,9 @@ public class Créno implements Décomposable, Serializable,Comparable<Créno> {
     @Override
     public int compareTo(Créno o) {
         if(o.getHeureDebut().isAfter(HeureDebut)){
-            return 1;
-        }else if (o.getHeureDebut().isBefore(HeureDebut)){
             return -1;
+        }else if (o.getHeureDebut().isBefore(HeureDebut)){
+            return 1;
         }else {
             return 0;
         }
@@ -82,5 +82,13 @@ public class Créno implements Décomposable, Serializable,Comparable<Créno> {
 
     public void setTache(Tache tache) {
         this.tache = tache;
+    }
+
+    public EtatCréno getÉtat() {
+        return état;
+    }
+
+    public Tache getTache() {
+        return tache;
     }
 }
