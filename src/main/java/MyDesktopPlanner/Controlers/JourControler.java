@@ -3,6 +3,7 @@ package MyDesktopPlanner.Controlers;
 import MyDesktopPlanner.Calendrier.Créno;
 import MyDesktopPlanner.Calendrier.EtatCréno;
 import MyDesktopPlanner.Systeme;
+import MyDesktopPlanner.Tache.ProgressionTache;
 import MyDesktopPlanner.Tache.Tache;
 import MyDesktopPlanner.Tache.TacheSimple;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
@@ -59,8 +60,12 @@ public class JourControler {
                     Label priorityLabel = new Label(priority);
                     priorityLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
                     nameLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    ObservableList<ProgressionTache> progression = FXCollections.observableArrayList(ProgressionTache.completed,ProgressionTache.cancelled,ProgressionTache.inProgress,ProgressionTache.notRealzed,ProgressionTache.reported);
+                    ComboBox<ProgressionTache> comboBoxProgression = new ComboBox<>(progression);
+                    comboBoxProgression.setValue(créno.getTache().getProgressionTache()); // Set a default value
                     TheTaskVBox.getChildren().add(priorityLabel);
                     TheTaskVBox.getChildren().add(nameLabel);
+                    TheTaskVBox.getChildren().add(comboBoxProgression);
                 }
             }
         }
