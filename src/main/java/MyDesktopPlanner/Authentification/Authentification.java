@@ -10,18 +10,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Authentification {
-    private HashMap<String, Utilisateur> Utilisateurs = new HashMap<>();
+    private TreeMap<String, Utilisateur> Utilisateurs = new TreeMap<>();
 
     public Authentification(){
         try {
             FileInputStream fileInputStream = new FileInputStream("Users.ser");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Utilisateurs = (HashMap<String, Utilisateur>) objectInputStream.readObject();
+            Utilisateurs = (TreeMap<String, Utilisateur>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-            System.out.println("HashMap successfully read from file.");
+            System.out.println("TreeMap successfully read from file.");
         } catch (Exception e) {
             // Handle any exceptions that occur during file reading or deserialization
             e.printStackTrace();
@@ -38,7 +39,7 @@ public class Authentification {
             objectOutputStream.writeObject(Utilisateurs);
             objectOutputStream.close();
             fileOutputStream.close();
-            System.out.println("HashMap successfully written to file.");
+            System.out.println("TreeMap successfully written to file.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,7 +55,7 @@ public class Authentification {
             objectOutputStream.writeObject(Utilisateurs);
             objectOutputStream.close();
             fileOutputStream.close();
-            System.out.println("HashMap successfully written to file.");
+            System.out.println("TreeMap successfully written to file.");
         } catch (Exception e) {
             e.printStackTrace();
         }

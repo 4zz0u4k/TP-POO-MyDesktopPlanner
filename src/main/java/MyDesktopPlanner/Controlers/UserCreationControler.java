@@ -32,7 +32,6 @@ public class UserCreationControler {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             YearMonth yearMonthObject = YearMonth.now();
             FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("CalendarFX.fxml"));
-
             Scene scene = new Scene(fxmlLoader.load());
             CalendarControler MonthController = fxmlLoader.getController();
             MonthController.displayMonth(yearMonthObject , user);

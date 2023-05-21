@@ -5,10 +5,14 @@ import javafx.scene.paint.Color;
 import java.io.Serializable;
 
 public class Priority implements Serializable {
-    private Color couleur;
+    private double red;
+    private double green;
+    private double blue;
     private String nom;
-    public Priority(Color couleur, String nom){
-        this.couleur = couleur;
+    public Priority(double red,double green,double blue, String nom){
+        this.red = red;
+        this.blue = blue;
+        this.green = green;
         this.nom = nom;
     }
 
@@ -16,7 +20,15 @@ public class Priority implements Serializable {
         return nom;
     }
 
-    public Color getCouleur() {
-        return couleur;
+    public double getBlue() {
+        return blue;
+    }
+
+    public double getGreen() {
+        return green;
+    }
+
+    public double getRed() {
+        return red;
     }
 }

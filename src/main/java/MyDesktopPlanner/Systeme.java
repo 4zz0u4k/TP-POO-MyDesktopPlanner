@@ -1,5 +1,4 @@
 package MyDesktopPlanner;
-import MyDesktopPlanner.Controlers.AuthFormControler;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.time.YearMonth;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class Systeme extends Application {
     @Override
@@ -26,5 +25,28 @@ public class Systeme extends Application {
 
     public static void main(String[] args) {
         launch();
+        /*
+        Utilisateur user = new Utilisateur("Anything","azzou","azzou14","anything");
+        Utilisateur user1 = new Utilisateur("Anything","azzou","azzou56","anything");
+        Utilisateur user2 = new Utilisateur("Anything","azzou","azzou42","anything");
+        Utilisateur user3 = new Utilisateur("Anything","azzou","azzou41","anything");
+        Utilisateur user4 = new Utilisateur("Anything","azzou","azzou4","anything");
+        TreeMap<String,Utilisateur> Utilisateurs= new TreeMap<String,Utilisateur>();
+        Utilisateurs.put(user.getUserName(),user);
+        Utilisateurs.put(user1.getUserName(),user1);
+        Utilisateurs.put(user2.getUserName(),user2);
+        Utilisateurs.put(user3.getUserName(),user3);
+        Utilisateurs.put(user4.getUserName(),user4);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("Users.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(Utilisateurs);
+            objectOutputStream.close();
+            fileOutputStream.close();
+            System.out.println("TreeMap successfully written to file.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         */
     }
 }

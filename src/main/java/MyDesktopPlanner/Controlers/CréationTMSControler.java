@@ -48,7 +48,10 @@ public class CréationTMSControler {
     private TextField période;
     @FXML
     void handleSubmission(ActionEvent event) {
-        Priority prioritée = new Priority(priorityColor.getValue(),priority.getText());
+        double red = priorityColor.getValue().getRed();
+        double green = priorityColor.getValue().getGreen();
+        double blue = priorityColor.getValue().getBlue();
+        Priority prioritée = new Priority(red,green,blue,priority.getText());
         TacheSimple nouvellTache = new TacheSimple(NomTMS.getText(),prioritée, Duration.ofMinutes(Integer.parseInt(DuréeMinute.getText())).plusHours(Integer.parseInt(DuréeHeur.getText())));
         user.planificationManuelleSimple(date, LocalTime.of(Integer.parseInt(HeureDébut.getText()),Integer.parseInt(MinuteDébut.getText())),Integer.parseInt(période.getText()),Integer.parseInt(nbFois.getText()),nouvellTache);
     }
