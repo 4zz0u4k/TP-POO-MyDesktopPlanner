@@ -4,8 +4,6 @@ import MyDesktopPlanner.Calendrier.Créno;
 import MyDesktopPlanner.Calendrier.EtatCréno;
 import MyDesktopPlanner.Systeme;
 import MyDesktopPlanner.Tache.ProgressionTache;
-import MyDesktopPlanner.Tache.Tache;
-import MyDesktopPlanner.Tache.TacheSimple;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,22 +11,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 
 public class JourControler {
     private Utilisateur user;
@@ -57,15 +49,21 @@ public class JourControler {
                     String tacheName = créno.getTache().getNom();
                     Duration durée = créno.getTache().getDurée();
                     Label nameLabel = new Label(tacheName);
+                    nameLabel.setStyle("-fx-font-size: 28px;");
                     Label priorityLabel = new Label(priority);
+                    priorityLabel.setStyle("-fx-font-size: 28px");
                     priorityLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
                     nameLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
                     ObservableList<ProgressionTache> progression = FXCollections.observableArrayList(ProgressionTache.completed,ProgressionTache.cancelled,ProgressionTache.inProgress,ProgressionTache.notRealzed,ProgressionTache.reported);
                     ComboBox<ProgressionTache> comboBoxProgression = new ComboBox<>(progression);
-                    comboBoxProgression.setValue(créno.getTache().getProgressionTache()); // Set a default value
+                    comboBoxProgression.setStyle("-fx-font-size: 16px; -fx-pref-width: 200px;");
+                    comboBoxProgression.setValue(créno.getTache().getProgressionTache());
                     TheTaskVBox.getChildren().add(priorityLabel);
                     TheTaskVBox.getChildren().add(nameLabel);
                     TheTaskVBox.getChildren().add(comboBoxProgression);
+                    comboBoxProgression.valueProperty().addListener((observable, oldValue, newValue) -> {
+                        créno.getTache().setProgressionTache(newValue);
+                    });
                 }
             }
         }

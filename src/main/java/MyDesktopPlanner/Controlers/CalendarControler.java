@@ -1,5 +1,6 @@
 package MyDesktopPlanner.Controlers;
 
+import MyDesktopPlanner.Authentification.Authentification;
 import MyDesktopPlanner.Systeme;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.fxml.FXML;
@@ -10,15 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
 import java.time.YearMonth;
 
 public class CalendarControler {
@@ -32,6 +29,10 @@ public class CalendarControler {
     private Button goForward;
     @FXML
     private Button AjtCrénoBTN;
+
+    public void handleCloseRequest(Authentification auth) {
+        auth.save();
+    }
 
     public void displayMonth(YearMonth yearMonthObject, Utilisateur user) {
         calendarGrid.getChildren().clear(); // Clear existing buttons

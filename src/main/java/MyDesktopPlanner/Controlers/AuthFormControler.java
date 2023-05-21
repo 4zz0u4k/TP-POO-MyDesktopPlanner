@@ -7,30 +7,51 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.time.YearMonth;
 
 public class AuthFormControler {
 
+    private Authentification auth;
     @FXML
     private TextField AuthUserName;
     @FXML
     void authInfosSubmission(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        auth = new Authentification();
+        if (auth.verifierExistance(AuthUserName.getText())){
+            try{
+                Utilisateur user = auth.getUserByUserName(AuthUserName.getText());
+                YearMonth yearMonthObject = YearMonth.now();
+                FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("CalendarFX.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                CalendarControler MonthController = fxmlLoader.getController();
+                MonthController.displayMonth(yearMonthObject , user);
+                stage.setTitle("MyDesktopPlanner");
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+                stage.setOnCloseRequest(e -> {
+                    // Call your function or perform any actions here
+                    MonthController.handleCloseRequest(auth);
+                });
+            }catch (Exception e){
+                System.out.println("An error occured while login");
+            }
+        }
+        else {
+            System.out.println("Doesnt exist !!");
+        }
 
-        System.out.println("UserName : " + AuthUserName.getText());
-        // Loading the page
+    }
+
+    @FXML
+    void handleCompteCreationRedirection(ActionEvent event) {
         try{
-            Utilisateur user = new Utilisateur("azziz","akeb","4zzou","anything");
-            YearMonth yearMonthObject = YearMonth.now();
-            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("CalendarFX.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("CreateUser.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            CalendarControler MonthController = fxmlLoader.getController();
-            MonthController.displayMonth(yearMonthObject , user);
             stage.setTitle("MyDesktopPlanner");
             stage.setScene(scene);
             stage.centerOnScreen();
@@ -39,6 +60,5 @@ public class AuthFormControler {
         }catch (Exception e){
             System.out.println("An error occured while login");
         }
-
     }
 }

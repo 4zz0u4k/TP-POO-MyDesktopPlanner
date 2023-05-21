@@ -15,7 +15,6 @@ public class Utilisateur implements Serializable {
     private String nom;
     private String prénom;
     private String userName;
-    private String passWord;
     //Calendrier
     Calendrier calendrier;
     //Sauvgarde Planning
@@ -23,7 +22,6 @@ public class Utilisateur implements Serializable {
 
     public Utilisateur(String nom, String prénom, String userName, String passWord) {
         this.nom = nom;
-        this.passWord = passWord;
         this.userName = userName;
         this.prénom = prénom;
         this.calendrier = new Calendrier();
@@ -83,15 +81,6 @@ public class Utilisateur implements Serializable {
             return false;
         }
         return true;
-    }
-
-
-    public boolean vérifierInfoAuth(String passWord){
-        if(passWord.equals(this.passWord)){
-            return true;
-        }else {
-            return false;
-        }
     }
 
     public void planificationMannuelle(){

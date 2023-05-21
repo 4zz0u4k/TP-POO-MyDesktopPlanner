@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="602.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.CréationTMSControler">
+<AnchorPane prefHeight="602.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.CréationTMSControler" >
    <children>
       <CheckBox fx:id="PériodiqueBTN" layoutX="621.0" layoutY="402.0" mnemonicParsing="false" text="Périodique">
          <font>
