@@ -5,10 +5,15 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 import MyDesktopPlanner.Calendrier.*;
 import MyDesktopPlanner.Tache.Tache;
 import MyDesktopPlanner.Tache.TacheSimple;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Utilisateur implements Serializable {
     //Infos User
@@ -18,6 +23,9 @@ public class Utilisateur implements Serializable {
     //Calendrier
     Calendrier calendrier;
     //Sauvgarde Planning
+    //Badges
+    Badge badgeStatus;
+
 
 
     public Utilisateur(String nom, String prénom, String userName, String passWord) {
@@ -25,9 +33,10 @@ public class Utilisateur implements Serializable {
         this.userName = userName;
         this.prénom = prénom;
         this.calendrier = new Calendrier();
+        this.badgeStatus = Badge.Nothing;
     }
 
-    public void initialisationCrénoLibre(){
+    /*public void initialisationCrénoLibre(){
         Scanner scanner = new Scanner(System.in);
         boolean inserer;
         System.out.println("Voulez vous inserer des crénos libre ?");
@@ -63,7 +72,7 @@ public class Utilisateur implements Serializable {
         else {
             System.out.println("OK !");
         }
-    }
+    }*/
 
     public boolean vérifierValiditéDateHeure(String heureDébut,String heureFin,String date){
         try {
@@ -83,25 +92,6 @@ public class Utilisateur implements Serializable {
         return true;
     }
 
-    public void planificationMannuelle(){
-        System.out.println("Tache simple ou décomposable ?");
-        Scanner scanner = new Scanner(System.in);
-        int choix = scanner.nextInt();
-        if(choix == 0){ //Simple
-            System.out.println("Name : ");
-            String nom = scanner.nextLine();
-            System.out.println("Priorité : ");
-            String priorité = scanner.nextLine();
-            System.out.println("Jour : ");
-            String jour = scanner.nextLine();
-            System.out.println("Durée : ");
-            String durée = scanner.nextLine();
-            this.calendrier.ajouterTacheSimpleManuelle(nom,priorité,Duration.parse(durée),LocalDate.parse(jour));
-        }else { //Décomposable
-
-        }
-    }
-
     public void planificationManuelleSimple(LocalDate date, LocalTime heureDébut, int pèriodicité, int forHowLong,TacheSimple tache){
         calendrier.planificationTacheSimple(date,heureDébut,pèriodicité,forHowLong,tache);
     }
@@ -117,5 +107,26 @@ public class Utilisateur implements Serializable {
 
     public String getUserName() {
         return userName;
+    }
+
+    public void afficherCalComplet(){
+        calendrier.afficher();
+    }
+
+    public Void SetBadge(){
+        int res=  calendrier.BadgeUpdate();
+        if(res == 0){
+            this.badgeStatus = Badge.Nothing;
+        }else if(res == 1){
+            this.badgeStatus = Badge.Good;
+        }else if(res == 2){
+            this.badgeStatus = Badge.VeryGood;
+        }else {
+            this.badgeStatus = Badge.Excellent;
+        }
+    }
+
+    public Badge getBadge(){
+        return this.badgeStatus;
     }
 }

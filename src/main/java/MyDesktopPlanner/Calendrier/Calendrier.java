@@ -8,8 +8,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Year;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class Calendrier implements Serializable {
     private HashMap<LocalDate, Jour> jours;
+    //min Tache par jour
+    private int minTask = 2;
     public Calendrier(){
         this.jours = new HashMap<LocalDate, Jour>();
     }
@@ -17,28 +22,15 @@ public class Calendrier implements Serializable {
         if (jours.containsKey(dateInsertion)) {
             Jour jour = jours.get(dateInsertion);
             jour.insererCréno(créno);
-            System.out.println("Contien deja un creno !!");
+            //System.out.println("Contien deja un creno !!");
         } else {
             Jour jour = new Jour();
             jour.insererCréno(créno);
             jours.put(dateInsertion, jour);
-            System.out.println("Initialisation d'une nouvelle date !!");
+            //System.out.println("Initialisation d'une nouvelle date !!");
         }
     }
 
-    public void ajouterTacheSimpleManuelle(String nom, String priorité, Duration durée,LocalDate jour){
-        if(jours.containsKey(jour)){
-            System.out.println("Jour trouvée :)");
-            if(jour.isBefore(LocalDate.now())){//Go atack les crénos
-
-            }else {
-                System.out.println("How come nigga ???");
-            }
-        }
-        else {
-            System.out.println("Ce jours n'existe pas :(");
-        }
-    }
 
     public Jour getSpecificJourney(LocalDate date){
         if(jours.containsKey(date)){
@@ -55,5 +47,31 @@ public class Calendrier implements Serializable {
         else {
             System.out.println("Y'a aucun créno libre dans ce jours la !! ");
         }
+    }
+
+    public void afficher(){
+        jours.forEach((date, day) -> {
+            System.out.print(date.toString());
+            day.affichageCrenos();
+            System.out.println();
+        });
+    }
+
+    public int BadgeUpdate(){
+        final int[] res = {0};
+        final int[] tmp = {0};
+        final int[] dayCpt = {0};
+        jours.forEach((date, day) -> {
+            dayCpt[0]++;
+            if(day.getTaskNumDay() >= minTask){
+                tmp[0]++;
+            }
+            if(tmp[0] == 5 && dayCpt[0] ==5){
+                res[0]++;
+                dayCpt[0] = 0;
+                tmp[0]= 0;
+            }
+        });
+        return res[0];
     }
 }
