@@ -1,7 +1,6 @@
 package MyDesktopPlanner.Controlers;
 
-import MyDesktopPlanner.Tache.Priority;
-import MyDesktopPlanner.Tache.Tache;
+import MyDesktopPlanner.Tache.Categorie;
 import MyDesktopPlanner.Tache.TacheSimple;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.event.ActionEvent;
@@ -51,7 +50,7 @@ public class CréationTMSControler {
         double red = priorityColor.getValue().getRed();
         double green = priorityColor.getValue().getGreen();
         double blue = priorityColor.getValue().getBlue();
-        Priority prioritée = new Priority(red,green,blue,priority.getText());
+        Categorie prioritée = new Categorie(red,green,blue,priority.getText());
         TacheSimple nouvellTache = new TacheSimple(NomTMS.getText(),prioritée, Duration.ofMinutes(Integer.parseInt(DuréeMinute.getText())).plusHours(Integer.parseInt(DuréeHeur.getText())));
         user.planificationManuelleSimple(date, LocalTime.of(Integer.parseInt(HeureDébut.getText()),Integer.parseInt(MinuteDébut.getText())),Integer.parseInt(période.getText()),Integer.parseInt(nbFois.getText()),nouvellTache);
     }

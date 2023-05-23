@@ -1,5 +1,6 @@
 package MyDesktopPlanner.Calendrier;
 
+import MyDesktopPlanner.Tache.ProgressionTache;
 import MyDesktopPlanner.Tache.TacheSimple;
 
 import java.io.Serializable;
@@ -7,16 +8,18 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 public class Jour implements Serializable {
     ArrayList<Créno> listeCréno;
+    private int TaskPerDay;
     public Jour(){
         listeCréno = new ArrayList<Créno>();
+        TaskPerDay = 0;
     }
     public boolean insererCréno(Créno newCréno){
         if (this.vérifierDisponibilitéeCréno(newCréno)){
             listeCréno.add(newCréno);
-            System.out.println("Suiiiiiii sa verife");
+            //System.out.println("Suiiiiiii sa verife");
             return true;
         }else {
-            System.out.println("Ak dekhltou f w7d kyn deja !!");
+            //System.out.println("Ak dekhltou f w7d kyn deja !!");
             return false;
         }
     }
@@ -41,6 +44,22 @@ public class Jour implements Serializable {
                 return;
             }
         }
+    }
+
+    public void affichageCrenos(){
+        for (Créno crenos : listeCréno){
+            System.out.println(crenos.toString());
+        }
+    }
+
+    public int getTaskNumDay(){
+        TaskPerDay = 0;
+        for (Créno créno : listeCréno){
+            if(créno.getTache() != null && créno.getTache().getProgressionTache() == ProgressionTache.completed){
+                TaskPerDay++;
+            }
+        }
+        return TaskPerDay;
     }
     public ArrayList<Créno> getListeCréno() {
         return listeCréno;
