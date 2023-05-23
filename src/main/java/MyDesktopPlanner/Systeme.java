@@ -1,4 +1,6 @@
 package MyDesktopPlanner;
+import MyDesktopPlanner.Tache.Priority;
+import MyDesktopPlanner.Tache.TacheDecomposable;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +10,14 @@ import javafx.stage.Stage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.TreeMap;
 
-public class Systeme extends Application {
+public class Systeme extends Application{
+
     @Override
     public void start(Stage stage) throws IOException {
         YearMonth yearMonthObject = YearMonth.now();
@@ -22,9 +28,7 @@ public class Systeme extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public static void main(String[] args) {
-        launch();
         /*
         Utilisateur user = new Utilisateur("Anything","azzou","azzou14","anything");
         Utilisateur user1 = new Utilisateur("Anything","azzou","azzou56","anything");
@@ -47,6 +51,32 @@ public class Systeme extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        /// the tache decomposable
+
+        Utilisateur user = new Utilisateur("Anything","azzou","azzou14","anything");
+
+        user.ajouterCrénoLibre(LocalDate.parse("2023-12-12"), LocalTime.parse("12:00:00"),LocalTime.parse("13:00:00"));
+        user.ajouterCrénoLibre(LocalDate.parse("2023-12-14"), LocalTime.parse("12:00:00"),LocalTime.parse("18:00:00"));
+        user.ajouterCrénoLibre(LocalDate.parse("2023-12-13"), LocalTime.parse("12:00:00"),LocalTime.parse("12:30:00"));
+        Priority priorité = new Priority(0.2,0.2,0.2,"anything");
+        TacheDecomposable tache = new TacheDecomposable("name",priorité,Duration.ofHours(3));
+        user.planificationManuelleDécomposable(LocalDate.parse("2023-12-12"),LocalDate.parse("2023-12-14"), Duration.ofHours(3),tache);
+        TreeMap<String,Utilisateur> Utilisateurs= new TreeMap<String,Utilisateur>();
+        Utilisateurs.put(user.getUserName(),user);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("Users.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(Utilisateurs);
+            objectOutputStream.close();
+            fileOutputStream.close();
+            System.out.println("TreeMap successfully written to file.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
          */
+    launch();
+
     }
 }

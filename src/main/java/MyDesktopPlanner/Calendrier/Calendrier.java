@@ -1,5 +1,6 @@
 package MyDesktopPlanner.Calendrier;
 
+import MyDesktopPlanner.Tache.Tache;
 import MyDesktopPlanner.Tache.TacheSimple;
 
 import java.io.Serializable;
@@ -7,13 +8,16 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.HashMap;
-public class Calendrier implements Serializable {
-    private HashMap<LocalDate, Jour> jours;
+import java.util.TreeMap;
+
+public class Calendrier implements Serializable{
+    private TreeMap<LocalDate, Jour> jours;
     public Calendrier(){
-        this.jours = new HashMap<LocalDate, Jour>();
+        this.jours = new TreeMap<LocalDate,Jour>();
     }
-    public void insertCreno(LocalDate dateInsertion , Créno créno){
+    public void insertCreno(LocalDate dateInsertion , Créno créno){ //Traiter le return FALSE !!!
         if (jours.containsKey(dateInsertion)) {
             Jour jour = jours.get(dateInsertion);
             jour.insererCréno(créno);
@@ -26,19 +30,6 @@ public class Calendrier implements Serializable {
         }
     }
 
-    public void ajouterTacheSimpleManuelle(String nom, String priorité, Duration durée,LocalDate jour){
-        if(jours.containsKey(jour)){
-            System.out.println("Jour trouvée :)");
-            if(jour.isBefore(LocalDate.now())){//Go atack les crénos
-
-            }else {
-                System.out.println("How come nigga ???");
-            }
-        }
-        else {
-            System.out.println("Ce jours n'existe pas :(");
-        }
-    }
 
     public Jour getSpecificJourney(LocalDate date){
         if(jours.containsKey(date)){
@@ -48,12 +39,34 @@ public class Calendrier implements Serializable {
         }
     }
 
-    public void planificationTacheSimple(LocalDate date, LocalTime heureDébut, int periodicité, int forHowLong, TacheSimple tache){
+    public void planificationTacheSimple(LocalDate date, LocalTime heureDébut, int periodicité, int forHowLong, Tache tache){
         if(jours.containsKey(date)){
             jours.get(date).planificationSM(heureDébut,tache);
         }
         else {
             System.out.println("Y'a aucun créno libre dans ce jours la !! ");
         }
+    }
+    public boolean generateProbablePlanning(LocalDate startingDate, LocalDate dateLimite, Duration durée, ArrayList<TupleCrénoDuréeExtraite> listeCandidat){
+        Duration savedDurée = durée;
+        for (LocalDate key : jours.keySet()) {
+            Jour jour = jours.get(key);
+            if (key.isAfter(startingDate.minusDays(1)) && key.isBefore(dateLimite.plusDays(1))){
+                System.out.println("IN the date :  "+key);
+                if(jour.checkInsertionPossible(durée,listeCandidat,key)){
+                    return true;
+                }
+                if (!listeCandidat.isEmpty()){
+                    durée = savedDurée;
+                    Duration réervéeJusquaMaintenant = Duration.ofMinutes(0);
+                    for (TupleCrénoDuréeExtraite element : listeCandidat){
+                        réervéeJusquaMaintenant = réervéeJusquaMaintenant.plus(element.getDurée());
+                    }
+                    listeCandidat.get(listeCandidat.size()-1).getDurée();
+                    durée = durée.minus(réervéeJusquaMaintenant);
+                }
+            }
+        }
+        return false;
     }
 }

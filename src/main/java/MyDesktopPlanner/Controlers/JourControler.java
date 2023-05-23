@@ -47,7 +47,6 @@ public class JourControler {
                     String priority = créno.getTache().getPrioritée().getNom();
                     Color couleur = new Color(créno.getTache().getPrioritée().getRed(), créno.getTache().getPrioritée().getGreen(), créno.getTache().getPrioritée().getBlue(), 1.0);
                     String tacheName = créno.getTache().getNom();
-                    Duration durée = créno.getTache().getDurée();
                     Label nameLabel = new Label(tacheName);
                     nameLabel.setStyle("-fx-font-size: 28px;");
                     Label priorityLabel = new Label(priority);
