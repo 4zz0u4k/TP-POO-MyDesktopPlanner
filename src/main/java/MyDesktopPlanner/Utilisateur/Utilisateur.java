@@ -57,16 +57,17 @@ public class Utilisateur implements Serializable {
         calendrier.insertCreno(date,newCréno);
     }
 
-    public void planificationManuelleDécomposable(LocalDate startingDate,LocalDate dateLimite, Duration durée,TacheDecomposable tache){
+    public ArrayList<TupleCrénoDuréeExtraite> planificationManuelleDécomposable(LocalDate startingDate,LocalDate dateLimite, Duration durée,TacheDecomposable tache){
         ArrayList<TupleCrénoDuréeExtraite> listeCondidat = new ArrayList<TupleCrénoDuréeExtraite>();
         if(calendrier.generateProbablePlanning(startingDate,dateLimite,durée,listeCondidat)){
             System.out.println("Good planning candidat génere avec succés");
-            this.UserApprovedTheDecomposablePlanning(listeCondidat,tache);
             for (TupleCrénoDuréeExtraite tuple : listeCondidat){
                 System.out.println("Date : "+tuple.getDate()+"\n Durée dans cette date : "+tuple.getDurée());
             }
+            return listeCondidat;
         }else{
             System.out.println("Insertion de cette tache est impossible");
+            return null;
         }
     }
 

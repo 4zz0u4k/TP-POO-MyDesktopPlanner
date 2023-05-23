@@ -18,7 +18,20 @@ public class AjoutTacheMDemende {
     LocalDate date;
     @FXML
     void ChoixTacheDécomposable(ActionEvent event) {
+        try{
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("AjoutTacheDécomposable.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            AjoutTacheDécomposableControler controller = fxmlLoader.getController();
+            controller.setUser(user);
+            stage.setTitle("Ajout tache Décomposable");
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
 
+        }catch (Exception e){
+            System.out.println("An error occured while login");
+        }
     }
 
     @FXML

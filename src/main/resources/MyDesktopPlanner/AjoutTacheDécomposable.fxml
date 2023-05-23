@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="675.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutTacheDécomposableControler">
+   <children>
+      <TextField fx:id="DuréeHeur" layoutX="390.0" layoutY="209.0" prefHeight="51.0" prefWidth="86.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <ColorPicker fx:id="couleurCategorie" layoutX="632.0" layoutY="293.0" prefHeight="51.0" prefWidth="45.0" promptText="C" />
+      <TextField fx:id="nomTache" layoutX="371.0" layoutY="135.0" prefHeight="51.0" prefWidth="255.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Catégorie" layoutX="371.0" layoutY="294.0" prefHeight="51.0" prefWidth="255.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="229.0" layoutY="14.0" prefHeight="51.0" prefWidth="381.0" text="Ajouter une Tache">
+         <font>
+            <Font name="Arial Black" size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="229.0" layoutY="68.0" prefHeight="51.0" prefWidth="381.0" text="Décomposable">
+         <font>
+            <Font name="Arial Black" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="DuréeMinute" layoutX="501.0" layoutY="209.0" prefHeight="51.0" prefWidth="86.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="476.0" layoutY="208.0" prefHeight="54.0" prefWidth="25.0" text=":">
+         <font>
+            <Font name="Arial Black" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="130.0" prefHeight="60.0" prefWidth="86.0" text="Nom :">
+         <font>
+            <Font name="Akhbar MT" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="261.0" layoutY="204.0" prefHeight="60.0" prefWidth="102.0" text="Durée :">
+         <font>
+            <Font name="Akhbar MT" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="284.0" prefHeight="60.0" prefWidth="163.0" text="Catégorie : ">
+         <font>
+            <Font name="Akhbar MT" size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="afficherPlan" layoutX="322.0" layoutY="594.0" mnemonicParsing="false" onAction="#handleSubmission" prefHeight="67.0" prefWidth="334.0" text="Voir le planning proposer">
+         <font>
+            <Font name="Andalus" size="28.0" />
+         </font>
+      </Button>
+      <TextField fx:id="YEARinit" alignment="CENTER" layoutX="347.0" layoutY="418.0" prefHeight="46.0" prefWidth="113.0">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </TextField>
+      <Label contentDisplay="CENTER" layoutX="435.0" layoutY="405.0" prefHeight="58.0" prefWidth="17.0">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="CENTER" layoutX="468.0" layoutY="405.0" text="-">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Monthinit" alignment="CENTER" layoutX="492.0" layoutY="417.0" prefHeight="46.0" prefWidth="65.0">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </TextField>
+      <Label contentDisplay="CENTER" layoutX="563.0" layoutY="405.0" prefHeight="58.0" prefWidth="17.0" text="-">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Dateinit" alignment="CENTER" layoutX="590.0" layoutY="421.0" prefHeight="46.0" prefWidth="65.0">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </TextField>
+      <Label layoutX="171.0" layoutY="428.0" text="Date initiale : ">
+         <font>
+            <Font name="Arial" size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="YEARlim" alignment="CENTER" layoutX="348.0" layoutY="514.0" prefHeight="46.0" prefWidth="113.0">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </TextField>
+      <Label contentDisplay="CENTER" layoutX="436.0" layoutY="501.0" prefHeight="58.0" prefWidth="17.0">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="CENTER" layoutX="469.0" layoutY="501.0" text="-">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Monthlim" alignment="CENTER" layoutX="493.0" layoutY="513.0" prefHeight="46.0" prefWidth="65.0">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </TextField>
+      <Label contentDisplay="CENTER" layoutX="564.0" layoutY="501.0" prefHeight="58.0" prefWidth="17.0" text="-">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Datelim" alignment="CENTER" layoutX="590.0" layoutY="513.0" prefHeight="46.0" prefWidth="65.0">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </TextField>
+      <Label layoutX="180.0" layoutY="514.0" text="Date limite : ">
+         <font>
+            <Font name="Arial" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="369.0" text="Periode de plannification : ">
+         <font>
+            <Font name="Arial" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

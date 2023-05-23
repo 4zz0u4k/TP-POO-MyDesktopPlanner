@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="416.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.ValideDécomposable">
+   <children>
+      <ScrollPane layoutY="-2.0" prefHeight="333.0" prefWidth="981.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="966.0">
+               <children>
+                  <VBox fx:id="Vbox" layoutY="-1.0" prefHeight="333.0" prefWidth="967.0" />
+               </children></AnchorPane>
+        </content>
+      </ScrollPane>
+      <Button fx:id="ValiderButton" layoutX="659.0" layoutY="343.0" mnemonicParsing="false" onAction="#Valider" text="Valider">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="AnnulerButton" layoutX="231.0" layoutY="343.0" mnemonicParsing="false" onAction="#Anuller" text="Annuler">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
