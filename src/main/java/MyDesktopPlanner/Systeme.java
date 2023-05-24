@@ -1,6 +1,4 @@
 package MyDesktopPlanner;
-import MyDesktopPlanner.Tache.Priority;
-import MyDesktopPlanner.Tache.TacheDecomposable;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +8,6 @@ import javafx.stage.Stage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.TreeMap;
 
@@ -75,6 +70,19 @@ public class Systeme extends Application{
             e.printStackTrace();
         }
 
+        Utilisateur user = new Utilisateur("Anything","azzou","azzou14","anything");
+        TreeMap<String, Utilisateur> Utilisateurs= new TreeMap<String,Utilisateur>();
+        Utilisateurs.put(user.getUserName(),user);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("Users.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(Utilisateurs);
+            objectOutputStream.close();
+            fileOutputStream.close();
+            System.out.println("TreeMap successfully written to file.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
          */
     launch();
 

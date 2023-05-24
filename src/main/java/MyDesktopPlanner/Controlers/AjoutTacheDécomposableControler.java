@@ -2,7 +2,8 @@ package MyDesktopPlanner.Controlers;
 
 import MyDesktopPlanner.Calendrier.TupleCrénoDuréeExtraite;
 import MyDesktopPlanner.Systeme;
-import MyDesktopPlanner.Tache.Priority;
+import MyDesktopPlanner.Tache.Catégorie;
+import MyDesktopPlanner.Tache.Prioritée;
 import MyDesktopPlanner.Tache.TacheDecomposable;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -59,12 +61,20 @@ public class AjoutTacheDécomposableControler {
     private TextField nomTache;
 
     @FXML
+    private ComboBox<Prioritée> Prioritéee;
+
+    void initilize(){
+        Prioritéee.getItems().addAll(Prioritée.values());
+        Prioritéee.setValue(Prioritée.MEDIUM);
+    }
+
+    @FXML
     void handleSubmission(ActionEvent event) {
         double red = couleurCategorie.getValue().getRed();
         double green = couleurCategorie.getValue().getGreen();
         double blue = couleurCategorie.getValue().getBlue();
-        Priority catégorie = new Priority(red,green,blue,Catégorie.getText());
-        TacheDecomposable tache = new TacheDecomposable(nomTache.getText(),catégorie,Duration.ofMinutes(Integer.parseInt(DuréeMinute.getText())).plusHours(Integer.parseInt(DuréeHeur.getText())));
+        MyDesktopPlanner.Tache.Catégorie catégorie = new Catégorie(red,green,blue,Catégorie.getText());
+        TacheDecomposable tache = new TacheDecomposable(nomTache.getText(),catégorie,Duration.ofMinutes(Integer.parseInt(DuréeMinute.getText())).plusHours(Integer.parseInt(DuréeHeur.getText())), Prioritéee.getValue());
         ArrayList<TupleCrénoDuréeExtraite> listeCandidat =  user.planificationManuelleDécomposable(LocalDate.parse(YEARinit.getText()+"-"+Monthinit.getText()+"-"+ Dateinit.getText()),LocalDate.parse(YEARlim.getText()+"-"+Monthlim.getText()+"-"+ Datelim.getText()), Duration.ofMinutes(Integer.parseInt(DuréeMinute.getText())).plusHours(Integer.parseInt(DuréeHeur.getText())),tache);
         if(listeCandidat != null){ //Proposer !!
             try{

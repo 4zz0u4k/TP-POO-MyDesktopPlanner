@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="418.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.ListeStatsControler">
+   <children>
+      <Button fx:id="rendmentButton" layoutX="24.0" layoutY="186.0" mnemonicParsing="false" onAction="#showRendement" text="Mon rendement journalier">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="etatButton" alignment="CENTER" layoutX="369.0" layoutY="153.0" mnemonicParsing="false" onAction="#ShowEtat" prefHeight="112.0" prefWidth="331.0" text="Aperçu de l'état d'avancement &#10;des taches d'aujourd'hui ">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

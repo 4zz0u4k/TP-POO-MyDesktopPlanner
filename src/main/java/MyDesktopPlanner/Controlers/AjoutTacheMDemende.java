@@ -24,6 +24,7 @@ public class AjoutTacheMDemende {
             Scene scene = new Scene(fxmlLoader.load());
             AjoutTacheDécomposableControler controller = fxmlLoader.getController();
             controller.setUser(user);
+            controller.initilize();
             stage.setTitle("Ajout tache Décomposable");
             stage.setScene(scene);
             stage.centerOnScreen();
@@ -43,6 +44,7 @@ public class AjoutTacheMDemende {
             CréationTMSControler controller = fxmlLoader.getController();
             controller.setDate(date);
             controller.setUser(user);
+            controller.initialize();
             stage.setTitle("Ajout tache simple");
             stage.setScene(scene);
             stage.centerOnScreen();

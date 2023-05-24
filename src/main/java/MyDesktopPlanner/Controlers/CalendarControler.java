@@ -3,6 +3,7 @@ package MyDesktopPlanner.Controlers;
 import MyDesktopPlanner.Authentification.Authentification;
 import MyDesktopPlanner.Systeme;
 import MyDesktopPlanner.Utilisateur.Utilisateur;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -29,15 +30,22 @@ public class CalendarControler {
     private Button goForward;
     @FXML
     private Button AjtCrénoBTN;
+    @FXML
+    private Button statsButton;
 
     public void handleCloseRequest(Authentification auth) {
         auth.save();
     }
 
     public void displayMonth(YearMonth yearMonthObject, Utilisateur user) {
+        if(user.getDateLimitePlanning()==LocalDate.MIN){
+            //Il faut initialiser une date limite au planning !!
+            handleInitialisationDateLimite(user);
+        }
         calendarGrid.getChildren().clear(); // Clear existing buttons
         MonthYearDislay.setText(yearMonthObject.getMonth().toString()+" "+yearMonthObject.getYear());
         LocalDate firstDayOfMonth = yearMonthObject.atDay(1);
+
         int firstDateNumber = firstDayOfMonth.getDayOfWeek().getValue();
         if(firstDateNumber == 7){
             firstDateNumber = 0;
@@ -55,7 +63,9 @@ public class CalendarControler {
             calendarGrid.add(button, col, row);
 
             int finalDay = day;
-
+            if(yearMonthObject.atDay(day).isAfter(user.getDateLimitePlanning())){
+                button.setDisable(true);
+            }
             button.setOnAction(event -> handleDateSelection(finalDay,yearMonthObject,user));
 
             GridPane.setHalignment(button, HPos.CENTER); // Align horizontally to center
@@ -66,9 +76,20 @@ public class CalendarControler {
                 row++;
             }
         }
+        if (yearMonthObject.plusMonths(1).atDay(1).isAfter(user.getDateLimitePlanning())) {
+            goForward.setDisable(true); // Disable the button
+        } else {
+            goForward.setDisable(false); // Enable the button
+        }
+        if (yearMonthObject.minusMonths(1).atDay(yearMonthObject.minusMonths(1).lengthOfMonth()).isBefore(LocalDate.now())) {
+            goBackward.setDisable(true); // Disable the button
+        } else {
+            goBackward.setDisable(false); // Enable the button
+        }
         goBackward.setOnAction(event -> handleGoBackward(yearMonthObject,user));
         goForward.setOnAction(event -> handleGoForward(yearMonthObject,user));
         AjtCrénoBTN.setOnAction(event -> handleAjoutCréno(user));
+        statsButton.setOnAction(event -> AfficherStats(user));
     }
 
     private void handleGoBackward(YearMonth theCurrentONe,Utilisateur user) {
@@ -104,6 +125,37 @@ public class CalendarControler {
             FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("AjoutCreno.fxml"));
             Parent AjoutCréno = fxmlLoader.load();
             AjoutCrénoControler controller = fxmlLoader.getController();
+            controller.setUser(user); // Set the user object on the controller
+            Ajoutpopup.setScene(new Scene(AjoutCréno));
+            Ajoutpopup.showAndWait();
+        }catch (Exception e ){
+            System.out.println("Something went wrong");
+            e.printStackTrace();
+        }
+    }
+    private void handleInitialisationDateLimite(Utilisateur user){
+        try{
+            Stage Ajoutpopup = new Stage();
+            Ajoutpopup.setTitle("Ajouter Créno");
+            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("InitialiserUneDateLimite.fxml"));
+            Parent AjoutCréno = fxmlLoader.load();
+            InitialiserUneDateLimiteControler controller = fxmlLoader.getController();
+            controller.setUser(user); // Set the user object on the controller
+            Ajoutpopup.setScene(new Scene(AjoutCréno));
+            Ajoutpopup.showAndWait();
+        }catch (Exception e ){
+            System.out.println("Something went wrong");
+            e.printStackTrace();
+        }
+    }
+
+    void AfficherStats(Utilisateur user) {
+        try{
+            Stage Ajoutpopup = new Stage();
+            Ajoutpopup.setTitle("Ajouter Créno");
+            FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("ListeStats.fxml"));
+            Parent AjoutCréno = fxmlLoader.load();
+            ListeStatsControler controller = fxmlLoader.getController();
             controller.setUser(user); // Set the user object on the controller
             Ajoutpopup.setScene(new Scene(AjoutCréno));
             Ajoutpopup.showAndWait();

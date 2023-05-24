@@ -1,15 +1,13 @@
 package MyDesktopPlanner.Tache;
 
-import javafx.scene.paint.Color;
-
 import java.io.Serializable;
 
-public class Priority implements Serializable {
+public class Catégorie implements Serializable {
     private double red;
     private double green;
     private double blue;
     private String nom;
-    public Priority(double red,double green,double blue, String nom){
+    public Catégorie(double red, double green, double blue, String nom){
         this.red = red;
         this.blue = blue;
         this.green = green;

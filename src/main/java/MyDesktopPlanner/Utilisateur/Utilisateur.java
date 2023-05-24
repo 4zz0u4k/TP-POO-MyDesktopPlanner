@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import MyDesktopPlanner.Calendrier.*;
+import MyDesktopPlanner.Tache.Prioritée;
 import MyDesktopPlanner.Tache.Tache;
 import MyDesktopPlanner.Tache.TacheDecomposable;
 import MyDesktopPlanner.Tache.TacheSimple;
@@ -21,6 +22,7 @@ public class Utilisateur implements Serializable {
     //Calendrier
     Calendrier calendrier;
     //Sauvgarde Planning
+    LocalDate dateLimitePlanning = LocalDate.MIN;
 
 
     public Utilisateur(String nom, String prénom, String userName, String passWord) {
@@ -75,7 +77,7 @@ public class Utilisateur implements Serializable {
         //Parcourir le plan candidat et décomposer la tache au meme temps
         int compteur = 1;
         for (TupleCrénoDuréeExtraite tuple : listeCondidat){
-            Tache tacheAinser = new TacheDecomposable(tache.getNom()+" "+compteur,tache.getPrioritée(),tuple.getDurée());
+            Tache tacheAinser = new TacheDecomposable(tache.getNom()+" "+compteur,tache.getPrioritée(),tuple.getDurée(), Prioritée.LOW);
             compteur += 1;
             calendrier.planificationTacheSimple(tuple.getDate(),tuple.getCréno().getHeureDebut(),0,0,tacheAinser);
             System.out.println("Date : "+tuple.getDate()+"\n Durée dans cette date : "+tuple.getDurée());
@@ -88,5 +90,17 @@ public class Utilisateur implements Serializable {
 
     public String getUserName() {
         return userName;
+    }
+
+    public LocalDate getDateLimitePlanning() {
+        return dateLimitePlanning;
+    }
+
+    public void setDateLimitePlanning(LocalDate dateLimitePlanning) {
+        this.dateLimitePlanning = dateLimitePlanning;
+    }
+
+    public Calendrier getCalendrier() {
+        return calendrier;
     }
 }

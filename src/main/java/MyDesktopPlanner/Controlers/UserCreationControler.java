@@ -39,9 +39,13 @@ public class UserCreationControler {
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
-
+            stage.setOnCloseRequest(e -> {
+                // Call your function or perform any actions here
+                MonthController.handleCloseRequest(auth);
+            });
         }catch (Exception e){
             System.out.println("An error occured while login");
+            e.printStackTrace();
         }
     }
 }

@@ -5,15 +5,17 @@ import java.time.Duration;
 
 public abstract class Tache implements Serializable {
     protected String nom;
-    protected Priority prioritée;
+    protected Catégorie prioritée;
     protected Duration durée;
     protected ProgressionTache progressionTache;
+    protected Prioritée prioritéeFr;
 
-    public Tache(String nom, Priority priorité, Duration durée) {
+    public Tache(String nom, Catégorie priorité, Duration durée,Prioritée prioritéeFr) {
         this.prioritée = priorité;
         this.durée = durée;
         this.nom = nom;
         this.progressionTache = ProgressionTache.inProgress;
+        this.prioritéeFr = prioritéeFr;
     }
 
     public Duration getDurée() {
@@ -24,7 +26,7 @@ public abstract class Tache implements Serializable {
         return nom;
     }
 
-    public Priority getPrioritée() {
+    public Catégorie getPrioritée() {
         return prioritée;
     }
 

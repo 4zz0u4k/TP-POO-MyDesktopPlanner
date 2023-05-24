@@ -5,10 +5,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
-import MyDesktopPlanner.Décompossable.Décomposable;
 import MyDesktopPlanner.Tache.*;
-public class Créno implements Décomposable, Serializable,Comparable<Créno> {
+public class Créno implements Serializable,Comparable<Créno> {
     private LocalTime HeureDebut;
     private LocalTime HeureFin;
     private EtatCréno état;
