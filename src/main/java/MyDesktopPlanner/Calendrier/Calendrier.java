@@ -1,5 +1,6 @@
 package MyDesktopPlanner.Calendrier;
 
+import MyDesktopPlanner.Tache.ProgressionTache;
 import MyDesktopPlanner.Tache.Tache;
 import MyDesktopPlanner.Tache.TacheSimple;
 
@@ -14,6 +15,7 @@ import java.util.TreeMap;
 
 public class Calendrier implements Serializable{
     private TreeMap<LocalDate, Jour> jours;
+    private int minTask = 2;
     public Calendrier(){
         this.jours = new TreeMap<LocalDate,Jour>();
     }
@@ -68,5 +70,22 @@ public class Calendrier implements Serializable{
             }
         }
         return false;
+    }
+    public int BadgeUpdate(){
+        final int[] res = {0};
+        final int[] tmp = {0};
+        final int[] dayCpt = {0};
+        jours.forEach((date, day) -> {
+            dayCpt[0]++;
+            if(day.getTaskNumDay() >= minTask){
+                tmp[0]++;
+            }
+            if(tmp[0] == 5 && dayCpt[0] ==5){
+                res[0]++;
+                dayCpt[0] = 0;
+                tmp[0]= 0;
+            }
+        });
+        return res[0];
     }
 }

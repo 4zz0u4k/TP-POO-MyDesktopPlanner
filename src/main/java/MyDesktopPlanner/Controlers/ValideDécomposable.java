@@ -7,6 +7,7 @@ import MyDesktopPlanner.Utilisateur.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,17 +31,23 @@ public class ValideDécomposable {
     private VBox Vbox;
 
     void DisplayList(){
+        Vbox.setSpacing(5);
         for(TupleCrénoDuréeExtraite element : listeCandidta){
             System.out.println("Humm : "+element.getDate().toString());
             LocalTime HeureDébut = element.getCréno().getHeureDebut();
             LocalTime HeureFin = element.getCréno().getHeureDebut().plus(element.getDurée());
             LocalDate date = element.getDate();
             HBox hbox = new HBox();
-            Text textHeureDebut = new Text("Heure de début: " + HeureDébut.toString());
-            Text textHeureFin = new Text("Heure de fin: " + HeureFin.toString());
-            Text textDate = new Text("Date: " + date.toString());
-            hbox.getChildren().addAll(textHeureDebut, textHeureFin, textDate);
-            Vbox.getChildren().add(hbox);
+            Text textHeureDebut = new Text("   Heure de début: " + HeureDébut.toString());
+            Text textHeureFin = new Text("   Heure de fin: " + HeureFin.toString());
+            Text textDate = new Text("   Date: " + date.toString());
+            textDate.setStyle("-fx-font-size: 24px;");
+            textHeureFin.setStyle("-fx-font-size: 24px;");
+            textHeureDebut.setStyle("-fx-font-size: 24px;");
+            Vbox.getChildren().addAll(textDate,textHeureDebut,textHeureFin);
+            Separator separator = new Separator();
+            separator.setStyle("-fx-background-color: black; -fx-pref-width: 2px;");
+            Vbox.getChildren().add(separator);
         }
     }
 

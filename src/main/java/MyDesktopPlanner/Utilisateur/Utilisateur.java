@@ -23,32 +23,16 @@ public class Utilisateur implements Serializable {
     Calendrier calendrier;
     //Sauvgarde Planning
     LocalDate dateLimitePlanning = LocalDate.MIN;
-
+    Badge badgeStatus;
 
     public Utilisateur(String nom, String prénom, String userName, String passWord) {
         this.nom = nom;
         this.userName = userName;
         this.prénom = prénom;
         this.calendrier = new Calendrier();
+        this.badgeStatus = Badge.Nothing;
     }
 
-    public boolean vérifierValiditéDateHeure(String heureDébut,String heureFin,String date){
-        try {
-            LocalDate.parse(date);
-        } catch (DateTimeParseException e) {
-            System.out.println("you didn't respect the giving date format :((  YYYY-MM-DD");
-            return false;
-        }
-        if(LocalTime.parse(heureDébut).isAfter(LocalTime.parse(heureFin))) {
-            System.out.println("heure Debut after heure fin ??");
-            return false;
-        }
-        if(LocalDate.parse(date).isBefore(LocalDate.now())){
-            System.out.println("Youcan't add a free creno in a date thats already passed mate :)");
-            return false;
-        }
-        return true;
-    }
 
     public void planificationManuelleSimple(LocalDate date, LocalTime heureDébut, int pèriodicité, int forHowLong,Tache tache){ //Tache Simple w teba3 l problem !!
         calendrier.planificationTacheSimple(date,heureDébut,pèriodicité,forHowLong,tache);
@@ -102,5 +86,18 @@ public class Utilisateur implements Serializable {
 
     public Calendrier getCalendrier() {
         return calendrier;
+    }
+    public Void SetBadge(){
+        int res =  calendrier.BadgeUpdate();
+        if(res == 0){
+            this.badgeStatus = Badge.Nothing;
+        }else if(res == 1){
+            this.badgeStatus = Badge.Good;
+        }else if(res == 2){
+            this.badgeStatus = Badge.VeryGood;
+        }else {
+            this.badgeStatus = Badge.Excellent;
+        }
+        return null;
     }
 }

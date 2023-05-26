@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.DailyTacheProgressionControler">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.DailyTacheProgressionControler">
    <children>
       <ScrollPane layoutX="3.0" layoutY="66.0" prefHeight="196.0" prefWidth="594.0">
         <content>
@@ -23,6 +23,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="OKbutton" layoutX="232.0" layoutY="317.0" mnemonicParsing="false" onAction="#OK" prefHeight="44.0" prefWidth="137.0" text="OK" />
+      <Button fx:id="OKbutton" layoutX="173.0" layoutY="300.0" mnemonicParsing="false" onAction="#OK" prefHeight="44.0" prefWidth="137.0" styleClass="side-Buttons" text="OK" />
    </children>
 </AnchorPane>

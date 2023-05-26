@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -44,25 +45,49 @@ public class JourControler {
                     //Vide
                 }
                 else {
-                    String priority = créno.getTache().getPrioritée().getNom();
+                    //Couleur
                     Color couleur = new Color(créno.getTache().getPrioritée().getRed(), créno.getTache().getPrioritée().getGreen(), créno.getTache().getPrioritée().getBlue(), 1.0);
+                    //Categorie
+                    String catégorie = créno.getTache().getPrioritée().getNom();
+                    Label CateLabel = new Label("   Categorie : "+catégorie);
+                    CateLabel.setStyle("-fx-font-size: 24px");
+                    CateLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    //Name
                     String tacheName = créno.getTache().getNom();
-                    Label nameLabel = new Label(tacheName);
-                    nameLabel.setStyle("-fx-font-size: 28px;");
-                    Label priorityLabel = new Label(priority);
-                    priorityLabel.setStyle("-fx-font-size: 28px");
-                    priorityLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    Label nameLabel = new Label("   Tache : "+tacheName);
+                    nameLabel.setStyle("-fx-font-size: 24px;");
                     nameLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    //HeureDébut
+                    Label heureDébutLabel = new Label("   Debut : "+créno.getHeureDebut());
+                    heureDébutLabel.setStyle("-fx-font-size: 24px;");
+                    heureDébutLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    //Durée
+                    Label duréeLabel = new Label("   Durée : "+créno.getTache().getDurée().toString());
+                    duréeLabel.setStyle("-fx-font-size: 24px;");
+                    duréeLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+                    //Prioritée
+                    Label prioritéeLabel = new Label("   Prioritée : "+créno.getTache().getPrioritéeFr());
+                    prioritéeLabel.setStyle("-fx-font-size: 24px;");
+                    prioritéeLabel.setBackground(new Background(new BackgroundFill(couleur, CornerRadii.EMPTY, Insets.EMPTY)));
+
                     ObservableList<ProgressionTache> progression = FXCollections.observableArrayList(ProgressionTache.completed,ProgressionTache.cancelled,ProgressionTache.inProgress,ProgressionTache.notRealzed,ProgressionTache.reported);
                     ComboBox<ProgressionTache> comboBoxProgression = new ComboBox<>(progression);
                     comboBoxProgression.setStyle("-fx-font-size: 16px; -fx-pref-width: 200px;");
                     comboBoxProgression.setValue(créno.getTache().getProgressionTache());
-                    TheTaskVBox.getChildren().add(priorityLabel);
+
+                    //The adding part
                     TheTaskVBox.getChildren().add(nameLabel);
+                    TheTaskVBox.getChildren().add(heureDébutLabel);
+                    TheTaskVBox.getChildren().add(duréeLabel);
+                    TheTaskVBox.getChildren().add(CateLabel);
+                    TheTaskVBox.getChildren().add(prioritéeLabel);
                     TheTaskVBox.getChildren().add(comboBoxProgression);
                     comboBoxProgression.valueProperty().addListener((observable, oldValue, newValue) -> {
                         créno.getTache().setProgressionTache(newValue);
                     });
+                    Separator separator = new Separator();
+                    separator.setStyle("-fx-background-color: black; -fx-pref-width: 2px;");
+                    TheTaskVBox.getChildren().add(separator);
                 }
             }
         }

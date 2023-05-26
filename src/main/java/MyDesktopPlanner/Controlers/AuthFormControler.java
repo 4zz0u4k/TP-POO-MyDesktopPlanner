@@ -7,12 +7,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.time.YearMonth;
 
 public class AuthFormControler {
 
+    @FXML
+    private Label message;
     private Authentification auth;
     @FXML
     private TextField AuthUserName;
@@ -41,7 +44,7 @@ public class AuthFormControler {
             }
         }
         else {
-            System.out.println("Doesnt exist !!");
+            message.setText("Utilisateur Introuvable");
         }
 
     }

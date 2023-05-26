@@ -56,10 +56,8 @@ public class CalendarControler {
 
         for(int day = 1; day <= yearMonthObject.lengthOfMonth(); day++) {
             Button button = new Button(String.valueOf(day));
-            button.setPrefWidth(60);
-            button.setPrefHeight(60);
             // Add event handler to handle button click and navigate to the specific date
-
+            button.getStyleClass().add("rounded-button");
             calendarGrid.add(button, col, row);
 
             int finalDay = day;

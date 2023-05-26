@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutTacheMDemende">
+<AnchorPane prefHeight="207.0" prefWidth="562.0" style="-fx-background-color: white;" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutTacheMDemende">
    <children>
-      <Label alignment="CENTER" layoutX="19.0" layoutY="43.0" text="Ajouter une nouvelle Tache">
+      <Label alignment="CENTER" layoutX="75.0" layoutY="33.0" text="Ajouter une nouvelle Tache">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="34.0" />
          </font>
       </Label>
-      <Button layoutX="50.0" layoutY="111.0" mnemonicParsing="false" onAction="#ChoixTacheDécomposable" prefHeight="68.0" prefWidth="167.0" text="Décomposable">
+      <Button layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#ChoixTacheDécomposable" prefHeight="68.0" prefWidth="167.0" styleClass="side-Buttons" text="Décomposable">
          <font>
             <Font name="Arial Black" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="241.0" layoutY="111.0" mnemonicParsing="false" onAction="#ChoixTacheSimple" prefHeight="68.0" prefWidth="167.0" text="Simple">
+      <Button layoutX="293.0" layoutY="95.0" mnemonicParsing="false" onAction="#ChoixTacheSimple" prefHeight="68.0" prefWidth="167.0" styleClass="side-Buttons" text="Simple">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>

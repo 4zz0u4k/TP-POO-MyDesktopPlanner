@@ -1,5 +1,6 @@
 package MyDesktopPlanner.Calendrier;
 
+import MyDesktopPlanner.Tache.ProgressionTache;
 import MyDesktopPlanner.Tache.Tache;
 import MyDesktopPlanner.Tache.TacheSimple;
 
@@ -10,26 +11,23 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 public class Jour implements Serializable{
     ArrayList<Créno> listeCréno;
+    private int TaskPerDay;
     public Jour(){
         listeCréno = new ArrayList<Créno>();
     }
     public boolean insererCréno(Créno newCréno){
         if (this.vérifierDisponibilitéeCréno(newCréno)){
             listeCréno.add(newCréno);
-            System.out.println("Suiiiiiii sa verife");
             return true;
         }else {
-            System.out.println("Ak dekhltou f w7d kyn deja !!");
             return false;
         }
     }
     private boolean vérifierDisponibilitéeCréno(Créno nouveaCréno){
         for (Créno créno : listeCréno) {
             if((nouveaCréno.getHeureDebut().isAfter(créno.getHeureDebut())) && (nouveaCréno.getHeureDebut().isBefore(créno.getHeureFin()))){
-                System.out.println("Vous ete entrain d'inserer dans créno qui existe deja !!! ");
                 return false;
             } else if ((nouveaCréno.getHeureFin().isAfter(créno.getHeureDebut())) && (nouveaCréno.getHeureFin().isBefore(créno.getHeureFin()))) {
-                System.out.println("Well m3a lwl ak s7i7 mais mzl dekhlou f w7d");
                 return false;
             }
         }
@@ -64,6 +62,16 @@ public class Jour implements Serializable{
 
         }
         return false;
+    }
+
+    public int getTaskNumDay(){
+        TaskPerDay = 0;
+        for (Créno créno : listeCréno){
+            if(créno.getTache() != null && créno.getTache().getProgressionTache() == ProgressionTache.completed){
+                TaskPerDay++;
+            }
+        }
+        return TaskPerDay;
     }
     public ArrayList<Créno> getListeCréno() {
         return listeCréno;

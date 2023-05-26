@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -40,20 +41,39 @@ public class RendementJouralierControler {
     public void Display(){
         int nbcompleted = 0;
         int remaining = 0;
-        ArrayList<Créno> listecréno = user.getCalendrier().getSpecificJourney(LocalDate.now()).getListeCréno();
-        for (Créno créno : listecréno){
-            if(créno.getÉtat() == EtatCréno.Occupée){
-                Label progressLabel = new Label("Task Progress: " + créno.getTache().getProgressionTache());
-                Label nameLabel = new Label("Task Name: " + créno.getTache().getNom());
-                Label priorityLabel = new Label("Task Priority: " + créno.getTache().getPrioritée());
-                if(créno.getTache().getProgressionTache() == ProgressionTache.completed){
-                    VboxCompleted.getChildren().add(nameLabel);
-                    VboxCompleted.getChildren().add(priorityLabel);
-                    nbcompleted++;
-                }else {
-                    VboxUncompleted.getChildren().add(nameLabel);
-                    VboxUncompleted.getChildren().add(priorityLabel);
-                    remaining++;
+        if(user.getCalendrier().getSpecificJourney(LocalDate.now()) != null){
+            if(user.getCalendrier().getSpecificJourney(LocalDate.now()).getListeCréno() != null){
+                ArrayList<Créno> listecréno = user.getCalendrier().getSpecificJourney(LocalDate.now()).getListeCréno();
+                for (Créno créno : listecréno){
+                    if(créno.getÉtat() == EtatCréno.Occupée){
+                        Label progressLabel = new Label("   Progression : " + créno.getTache().getProgressionTache());
+                        Label nameLabel = new Label("    Tache : " + créno.getTache().getNom());
+                        Label categorieLabel = new Label("   Categorie : " + créno.getTache().getPrioritée().getNom());
+                        Label priorityLabel = new Label("   Prioritée : "+créno.getTache().getPrioritéeFr());
+                        progressLabel.setStyle("-fx-font-size: 24px;");
+                        nameLabel.setStyle("-fx-font-size: 24px;");
+                        categorieLabel.setStyle("-fx-font-size: 24px;");
+                        priorityLabel.setStyle("-fx-font-size: 24px;");
+                        if(créno.getTache().getProgressionTache() == ProgressionTache.completed){
+                            VboxCompleted.getChildren().add(nameLabel);
+                            VboxCompleted.getChildren().add(priorityLabel);
+                            VboxCompleted.getChildren().add(categorieLabel);
+                            VboxCompleted.getChildren().add(progressLabel);
+                            Separator separator = new Separator();
+                            separator.setStyle("-fx-background-color: black; -fx-pref-width: 2px;");
+                            VboxCompleted.getChildren().add(separator);
+                            nbcompleted++;
+                        }else {
+                            VboxUncompleted.getChildren().add(nameLabel);
+                            VboxUncompleted.getChildren().add(priorityLabel);
+                            VboxUncompleted.getChildren().add(categorieLabel);
+                            VboxUncompleted.getChildren().add(progressLabel);
+                            Separator separator = new Separator();
+                            separator.setStyle("-fx-background-color: black; -fx-pref-width: 2px;");
+                            VboxUncompleted.getChildren().add(separator);
+                            remaining++;
+                        }
+                    }
                 }
             }
         }

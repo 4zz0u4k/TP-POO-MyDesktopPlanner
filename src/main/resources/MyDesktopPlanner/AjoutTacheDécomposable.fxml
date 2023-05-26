@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutTacheDécomposableControler">
+<AnchorPane prefHeight="675.0" prefWidth="980.0" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutTacheDécomposableControler">
    <children>
-      <TextField fx:id="DuréeHeur" layoutX="286.0" layoutY="209.0" prefHeight="51.0" prefWidth="86.0">
+      <TextField fx:id="DuréeHeur" alignment="CENTER" layoutX="286.0" layoutY="209.0" prefHeight="51.0" prefWidth="86.0" promptText="HH">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
       <ColorPicker fx:id="couleurCategorie" layoutX="632.0" layoutY="293.0" prefHeight="51.0" prefWidth="45.0" promptText="C" />
       <TextField fx:id="nomTache" layoutX="371.0" layoutY="135.0" prefHeight="51.0" prefWidth="255.0">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
       <TextField fx:id="Catégorie" layoutX="371.0" layoutY="294.0" prefHeight="51.0" prefWidth="255.0">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
       <Label alignment="CENTER" layoutX="229.0" layoutY="14.0" prefHeight="51.0" prefWidth="381.0" text="Ajouter une Tache">
@@ -36,9 +36,9 @@
             <Font name="Arial Black" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="DuréeMinute" layoutX="397.0" layoutY="209.0" prefHeight="51.0" prefWidth="86.0">
+      <TextField fx:id="DuréeMinute" alignment="CENTER" layoutX="397.0" layoutY="209.0" prefHeight="51.0" prefWidth="86.0" promptText="MM">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
       <Label alignment="CENTER" layoutX="372.0" layoutY="208.0" prefHeight="54.0" prefWidth="25.0" text=":">
@@ -61,12 +61,12 @@
             <Font name="Akhbar MT" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="afficherPlan" layoutX="322.0" layoutY="594.0" mnemonicParsing="false" onAction="#handleSubmission" prefHeight="67.0" prefWidth="334.0" text="Voir le planning proposer">
+      <Button fx:id="afficherPlan" layoutX="322.0" layoutY="594.0" mnemonicParsing="false" onAction="#handleSubmission" prefHeight="67.0" prefWidth="334.0" styleClass="side-Buttons-planning" text="Voir le planning proposer">
          <font>
             <Font name="Andalus" size="28.0" />
          </font>
       </Button>
-      <TextField fx:id="YEARinit" alignment="CENTER" layoutX="347.0" layoutY="418.0" prefHeight="46.0" prefWidth="113.0">
+      <TextField fx:id="YEARinit" alignment="CENTER" layoutX="347.0" layoutY="418.0" prefHeight="46.0" prefWidth="113.0" promptText="YYYY">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
@@ -81,7 +81,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="Monthinit" alignment="CENTER" layoutX="492.0" layoutY="417.0" prefHeight="46.0" prefWidth="65.0">
+      <TextField fx:id="Monthinit" alignment="CENTER" layoutX="492.0" layoutY="417.0" prefHeight="46.0" prefWidth="65.0" promptText="MM">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
@@ -91,7 +91,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="Dateinit" alignment="CENTER" layoutX="590.0" layoutY="421.0" prefHeight="46.0" prefWidth="65.0">
+      <TextField fx:id="Dateinit" alignment="CENTER" layoutX="590.0" layoutY="421.0" prefHeight="46.0" prefWidth="65.0" promptText="DD">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
@@ -101,7 +101,7 @@
             <Font name="Arial" size="29.0" />
          </font>
       </Label>
-      <TextField fx:id="YEARlim" alignment="CENTER" layoutX="348.0" layoutY="514.0" prefHeight="46.0" prefWidth="113.0">
+      <TextField fx:id="YEARlim" alignment="CENTER" layoutX="348.0" layoutY="514.0" prefHeight="46.0" prefWidth="113.0" promptText="YYYY">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
@@ -116,7 +116,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="Monthlim" alignment="CENTER" layoutX="493.0" layoutY="513.0" prefHeight="46.0" prefWidth="65.0">
+      <TextField fx:id="Monthlim" alignment="CENTER" layoutX="493.0" layoutY="513.0" prefHeight="46.0" prefWidth="65.0" promptText="MM">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
@@ -126,7 +126,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="Datelim" alignment="CENTER" layoutX="590.0" layoutY="513.0" prefHeight="46.0" prefWidth="65.0">
+      <TextField fx:id="Datelim" alignment="CENTER" layoutX="590.0" layoutY="513.0" prefHeight="46.0" prefWidth="65.0" promptText="DD">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>

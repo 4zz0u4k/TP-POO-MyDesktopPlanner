@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutCrénoControler">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.AjoutCrénoControler">
    <children>
       <TextField fx:id="HD" alignment="CENTER" layoutX="260.0" layoutY="103.0" prefHeight="46.0" prefWidth="65.0">
          <font>
@@ -39,7 +38,7 @@
             <Font name="Arial Black" size="22.0" />
          </font>
       </TextField>
-      <Button layoutX="238.0" layoutY="313.0" mnemonicParsing="false" onAction="#AjouterCréno" text="Ajouter">
+      <Button layoutX="182.0" layoutY="310.0" mnemonicParsing="false" onAction="#AjouterCréno" styleClass="side-Buttons" text="Ajouter">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
@@ -74,7 +73,7 @@
             <Font name="Arial Black" size="22.0" />
          </font>
       </TextField>
-      <Label layoutX="119.0" layoutY="40.0" text="Ajouter Créno Libre">
+      <Label layoutX="100.0" layoutY="25.0" text="Ajouter un Créno Libre">
          <font>
             <Font name="Arial Black" size="34.0" />
          </font>

@@ -6,11 +6,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MonthYear" prefHeight="900.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.CalendarControler">
+<AnchorPane fx:id="MonthYear" prefHeight="900.0" prefWidth="1680.0" style="-fx-background-color: white;" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.CalendarControler">
    <children>
-      <GridPane fx:id="calendarGrid" alignment="CENTER" gridLinesVisible="true" layoutX="417.0" layoutY="99.0" prefHeight="702.0" prefWidth="1024.0">
+      <GridPane fx:id="calendarGrid" alignment="CENTER" layoutX="360.0" layoutY="116.0" prefHeight="731.0" prefWidth="1081.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,61 +29,62 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label alignment="CENTER" layoutX="1294.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Samedi" textFill="#514a4a">
+      <Label alignment="CENTER" layoutX="1289.0" layoutY="52.0" prefHeight="47.0" prefWidth="155.0" text="Samedi">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="417.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Dimanche">
+      <Label layoutX="360.0" layoutY="52.0" prefHeight="47.0" prefWidth="155.0" text="Dimanche">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="31.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="709.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Mardi">
+      <Label alignment="CENTER" layoutX="670.0" layoutY="52.0" prefHeight="47.0" prefWidth="155.0" text="Mardi">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="856.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Mercredi">
+      <Label alignment="CENTER" layoutX="823.0" layoutY="50.0" prefHeight="47.0" prefWidth="155.0" text="Mercredi">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="1000.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Jeudi">
+      <Label alignment="CENTER" layoutX="979.0" layoutY="52.0" prefHeight="47.0" prefWidth="155.0" text="Jeudi">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="1147.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Vendredi">
+      <Label alignment="CENTER" layoutX="1134.0" layoutY="52.0" prefHeight="47.0" prefWidth="155.0" text="Vendredi">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="562.0" layoutY="52.0" prefHeight="47.0" prefWidth="147.0" text="Lundi">
+      <Label alignment="CENTER" layoutX="515.0" layoutY="50.0" prefHeight="47.0" prefWidth="155.0" text="Lundi">
          <font>
-            <Font name="Book Antiqua" size="32.0" />
+            <Font name="Book Antiqua Bold" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="MonthYearDislay" alignment="CENTER" layoutX="14.0" layoutY="73.0" prefHeight="53.0" prefWidth="363.0" text="">
+      <Label fx:id="MonthYearDislay" alignment="CENTER" layoutX="9.0" layoutY="215.0" prefHeight="53.0" prefWidth="308.0" text="MAY 2023">
          <font>
-            <Font size="36.0" />
+            <Font name="Bookman Old Style Bold" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="goBackward" layoutX="1484.0" layoutY="132.0" mnemonicParsing="false" text="&lt;--">
+      <Button fx:id="goBackward" layoutX="1491.0" layoutY="116.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="73.0" styleClass="scroll-Buttons" text="←">
          <font>
-            <Font name="AGA Arabesque" size="18.0" />
+            <Font name="AGA Arabesque" size="31.0" />
          </font>
       </Button>
-      <Button fx:id="goForward" layoutX="1535.0" layoutY="132.0" mnemonicParsing="false" text="--&gt;">
+      <Button fx:id="goForward" layoutX="1573.0" layoutY="116.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="73.0" styleClass="scroll-Buttons" text="→">
          <font>
-            <Font name="AGA Arabesque" size="18.0" />
+            <Font name="AGA Arabesque" size="31.0" />
          </font>
       </Button>
-      <Button fx:id="AjtCrénoBTN" layoutX="60.0" layoutY="277.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="218.0" text="Ajouter Créno libre">
+      <Button fx:id="AjtCrénoBTN" layoutX="43.0" layoutY="358.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="255.0" styleClass="side-Buttons" text="Ajouter Créno libre">
          <font>
             <Font name="Arial Narrow" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="statsButton" layoutX="81.0" layoutY="586.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="176.0" text="Stats" />
+      <Button fx:id="statsButton" layoutX="41.0" layoutY="453.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="255.0" styleClass="side-Buttons" text="Mes Stats" />
+      <Line endX="1148.0" layoutX="292.0" layoutY="116.0" startX="52.0" stroke="#797373" />
    </children>
 </AnchorPane>

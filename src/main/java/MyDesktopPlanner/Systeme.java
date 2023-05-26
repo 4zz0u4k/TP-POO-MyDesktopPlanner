@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.time.YearMonth;
 import java.util.TreeMap;
+
 
 public class Systeme extends Application{
 
     @Override
     public void start(Stage stage) throws IOException {
-        YearMonth yearMonthObject = YearMonth.now();
+        //YearMonth yearMonthObject = YearMonth.now();
         //Loading the page
         FXMLLoader fxmlLoader = new FXMLLoader(Systeme.class.getResource("AuthentificationForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -70,20 +70,9 @@ public class Systeme extends Application{
             e.printStackTrace();
         }
 
-        Utilisateur user = new Utilisateur("Anything","azzou","azzou14","anything");
-        TreeMap<String, Utilisateur> Utilisateurs= new TreeMap<String,Utilisateur>();
-        Utilisateurs.put(user.getUserName(),user);
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream("Users.ser");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(Utilisateurs);
-            objectOutputStream.close();
-            fileOutputStream.close();
-            System.out.println("TreeMap successfully written to file.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
          */
+
     launch();
 
     }

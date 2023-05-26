@@ -5,20 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="197.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.CréationDécomposableImpossible">
+<AnchorPane prefHeight="197.0" prefWidth="684.0" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.CréationDécomposableImpossible">
    <children>
-      <Label layoutX="146.0" layoutY="43.0" text="Impossible d'instancier cette Tache">
+      <Label layoutX="93.0" layoutY="22.0" text="Impossible d'instancier cette Tache">
          <font>
-            <Font name="Arial Black" size="32.0" />
+            <Font name="SansSerif Regular" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="retourModifier" layoutX="204.0" layoutY="99.0" mnemonicParsing="false" onAction="#RetourModiferT" text="Modifer la Tache">
+      <Button fx:id="retourModifier" layoutX="40.0" layoutY="84.0" mnemonicParsing="false" onAction="#RetourModiferT" styleClass="side-Buttons" text="Modifer la Tache">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="fermerButton" layoutX="626.0" layoutY="99.0" mnemonicParsing="false" onAction="#fermer" text="Fermer">
+      <Button fx:id="fermerButton" layoutX="394.0" layoutY="84.0" mnemonicParsing="false" onAction="#fermer" styleClass="side-Buttons" text="Fermer">
          <font>
             <Font size="24.0" />
          </font>

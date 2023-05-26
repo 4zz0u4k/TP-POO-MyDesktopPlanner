@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="416.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.ValideDécomposable">
+<AnchorPane prefHeight="416.0" prefWidth="981.0" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.ValideDécomposable">
    <children>
       <ScrollPane layoutY="-2.0" prefHeight="333.0" prefWidth="981.0">
         <content>
@@ -16,12 +16,12 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="ValiderButton" layoutX="659.0" layoutY="343.0" mnemonicParsing="false" onAction="#Valider" text="Valider">
+      <Button fx:id="ValiderButton" layoutX="587.0" layoutY="343.0" mnemonicParsing="false" onAction="#Valider" styleClass="side-Buttons" text="Valider">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="AnnulerButton" layoutX="231.0" layoutY="343.0" mnemonicParsing="false" onAction="#Anuller" text="Annuler">
+      <Button fx:id="AnnulerButton" layoutX="121.0" layoutY="343.0" mnemonicParsing="false" onAction="#Anuller" styleClass="side-Buttons" text="Annuler">
          <font>
             <Font size="24.0" />
          </font>

@@ -6,40 +6,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="295.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.InitialiserUneDateLimiteControler">
+<AnchorPane prefHeight="295.0" prefWidth="765.0" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.InitialiserUneDateLimiteControler">
    <children>
-      <Label layoutX="39.0" layoutY="37.0" text="Enterer une date limite pour votre planning">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="21.0" prefHeight="106.0" prefWidth="596.0" text="Veuillez saisir une date limite pour&#10;                votre planning ">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="Year" alignment="CENTER" layoutX="199.0" layoutY="122.0" prefHeight="25.0" prefWidth="149.0">
+      <TextField fx:id="Year" alignment="CENTER" layoutX="201.0" layoutY="134.0" prefHeight="25.0" prefWidth="149.0" promptText="Y Y Y Y">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
-      <TextField fx:id="month" alignment="CENTER" layoutX="375.0" layoutY="122.0" prefHeight="51.0" prefWidth="74.0">
+      <TextField fx:id="month" alignment="CENTER" layoutX="377.0" layoutY="134.0" prefHeight="51.0" prefWidth="74.0" promptText="M M">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
-      <TextField fx:id="date" alignment="CENTER" layoutX="474.0" layoutY="122.0" prefHeight="51.0" prefWidth="74.0">
+      <TextField fx:id="date" alignment="CENTER" layoutX="476.0" layoutY="134.0" prefHeight="51.0" prefWidth="74.0" promptText="DD">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </TextField>
-      <Label alignment="CENTER" layoutX="356.0" layoutY="122.0" text=":">
+      <Label alignment="CENTER" layoutX="358.0" layoutY="134.0" text=":">
          <font>
             <Font name="Arial Black" size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="456.0" layoutY="122.0" text=":">
+      <Label alignment="CENTER" layoutX="458.0" layoutY="134.0" text=":">
          <font>
             <Font name="Arial Black" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="submit" layoutX="298.0" layoutY="195.0" mnemonicParsing="false" onAction="#submit" text="Submit">
+      <Button fx:id="submit" layoutX="248.0" layoutY="197.0" mnemonicParsing="false" onAction="#submit" styleClass="side-Buttons" text="Confirmer">
          <font>
             <Font name="Arial Black" size="29.0" />
          </font>

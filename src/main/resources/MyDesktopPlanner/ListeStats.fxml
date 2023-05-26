@@ -4,15 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="418.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.ListeStatsControler">
+<AnchorPane prefHeight="325.0" prefWidth="561.0" style="-fx-background-color: white;" stylesheets="@Calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MyDesktopPlanner.Controlers.ListeStatsControler">
    <children>
-      <Button fx:id="rendmentButton" layoutX="24.0" layoutY="186.0" mnemonicParsing="false" onAction="#showRendement" text="Mon rendement journalier">
+      <Button fx:id="rendmentButton" layoutX="106.0" layoutY="62.0" mnemonicParsing="false" onAction="#showRendement" styleClass="side-Buttons-planninghh" text="Mon rendement d'aujourd'hui">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="etatButton" alignment="CENTER" layoutX="369.0" layoutY="153.0" mnemonicParsing="false" onAction="#ShowEtat" prefHeight="112.0" prefWidth="331.0" text="Aperçu de l'état d'avancement &#10;des taches d'aujourd'hui ">
+      <Button fx:id="etatButton" alignment="CENTER" layoutX="106.0" layoutY="186.0" mnemonicParsing="false" onAction="#ShowEtat" prefHeight="112.0" prefWidth="331.0" styleClass="side-Buttons-planninghh" text="État des tâches d'aujourd'hui">
          <font>
             <Font size="22.0" />
          </font>

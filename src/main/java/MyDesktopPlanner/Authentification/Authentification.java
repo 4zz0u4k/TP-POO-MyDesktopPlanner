@@ -24,7 +24,6 @@ public class Authentification {
             fileInputStream.close();
             System.out.println("TreeMap successfully read from file.");
         } catch (Exception e) {
-            // Handle any exceptions that occur during file reading or deserialization
             e.printStackTrace();
         }
     }

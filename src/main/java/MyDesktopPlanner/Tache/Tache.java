@@ -37,4 +37,8 @@ public abstract class Tache implements Serializable {
     public void setProgressionTache(ProgressionTache progressionTache) {
         this.progressionTache = progressionTache;
     }
+
+    public Prioritée getPrioritéeFr() {
+        return prioritéeFr;
+    }
 }
